@@ -8,3 +8,7 @@
   package:
       name: subscription-manager
       state: present
+
+- name: register prerequisite check completion
+  set_fact:
+    redhat_subscription_prequisite_check_completed: "yes"
