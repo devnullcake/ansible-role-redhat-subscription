@@ -19,6 +19,7 @@
     - name: list repositories not explicitly enabled
       debug:
         var: repositories_to_disable
+        verbosity: 3
 
     - name: disable repositories not explicitly enabled
       rhsm_repository:
