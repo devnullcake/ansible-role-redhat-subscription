@@ -1,5 +1,7 @@
 Red Hat Subscription
 ====================
+[![Build Status](https://travis-ci.org/devnullcake/ansible-role-redhat-subscription.svg?branch=master)](https://travis-ci.org/devnullcake/ansible-role-redhat-subscription) [![Ansible Role](https://img.shields.io/ansible/role/24717.svg)](https://galaxy.ansible.com/devnullcake/ansible-role-redhat-subscription/)
+
 An opinionated role using ansible modules [redhat_subscription](http://docs.ansible.com/ansible/latest/modules/redhat_subscription_module.html) and [rhsm_repository](http://docs.ansible.com/ansible/latest/modules/rhsm_repository_module.html) (new in Ansible 2.5) to allow for the easy registration of a host. Supports using either (activation key, organisation id) or (username, password) combinations.
 
 In addition to registration, repositories can be disabled and/or enabled during execution of this role.
