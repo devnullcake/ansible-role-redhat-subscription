@@ -18,16 +18,19 @@ Role Variables
 
 This role supports the following configurations via variables.
 
-1. `redhat_subscription_org_id`: Subscription organisation ID. If using an activation key, this is required.
-2. `redhat_subscription_activationkey`: Activation key to use for host registration.
-3. `redhat_subscription_username`: If not using an activation key, specify Red Hat username. 
-4. `redhat_subscription_password`: If not using an activation key, specify Red Hat password. This is required if using credentials to register the host.
-5. `redhat_subscription_state`: This variable can be used to specify if you want the subscription removed or added. This is passed directly to the state argument of the [redhat_subscription module](http://docs.ansible.com/ansible/latest/modules/redhat_subscription_module.html). Defaults to `present`.
-6. `redhat_subscription_pool_regex`: Pool regex to use when registering the host. This is passed directly to the state argument of the [redhat_subscription module](http://docs.ansible.com/ansible/latest/modules/redhat_subscription_module.html). Defaults to `^$`.
-7. `redhat_subscription_auto_attach`: Supported only when using credentials to register. Defaults to `no`.
-8. `redhat_subscription_disable_repos`: Repositories to disable. Defaults to `[]`.
-9. `redhat_subscription_enable_repos`: Repositories to enable. Defaults to `[]`. 
-10. `redhat_subscription_enable_explicit_repos_only`: This flag, if set, will explicitly disable all repositories that are not specified in `redhat_subscription_enable_repos`.
+* `redhat_subscription_org_id`: Subscription organisation ID. If using an activation key, this is required.
+* `redhat_subscription_activationkey`: Activation key to use for host registration.
+* `redhat_subscription_username`: If not using an activation key, specify Red Hat username. 
+* `redhat_subscription_password`: If not using an activation key, specify Red Hat password. This is required if using credentials to register the host.
+* `redhat_subscription_state`: This variable can be used to specify if you want the subscription removed or added. This is passed directly to the state argument of the [redhat_subscription module](http://docs.ansible.com/ansible/latest/modules/redhat_subscription_module.html). Defaults to `present`.
+* `redhat_subscription_pool_regex`: Pool regex to use when registering the host. This is passed directly to the state argument of the [redhat_subscription module](http://docs.ansible.com/ansible/latest/modules/redhat_subscription_module.html). Defaults to `^$`.
+* `redhat_subscription_auto_attach`: Supported only when using credentials to register. Defaults to `no`.
+* `redhat_subscription_disable_repos`: Repositories to disable. Defaults to `[]`.
+* `redhat_subscription_enable_repos`: Repositories to enable. Defaults to `[]`. 
+* `redhat_subscription_enable_explicit_repos_only`: This flag, if set, will explicitly disable all repositories that are not specified in `redhat_subscription_enable_repos`.
+* `redhat_subscription_skip_prereq`: Skip all prerequisite checks.
+* `redhat_subscription_force`: Force registration. This is passed through to the underlying ansible module.
+* `redhat_subscription_retry`: Number of times to retry registering the host. Defaults to 0.
 
 Dependencies
 ------------

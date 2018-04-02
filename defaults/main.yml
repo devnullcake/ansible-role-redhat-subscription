@@ -1,12 +1,15 @@
 ---
+redhat_subscription_skip_prereq: "no"
 redhat_subscription_org_id:
 redhat_subscription_activationkey:
 
 redhat_subscription_username:
 redhat_subscription_password:
 
+redhat_subscription_force: "no"
 redhat_subscription_state: "present"
 redhat_subscription_auto_attach: no
+redhat_subscription_retry: 0
 
 redhat_subscription_pool_regex: "^$"
 
