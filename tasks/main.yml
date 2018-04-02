@@ -1,0 +1,17 @@
+---
+- import_tasks: prerequisite.yml
+
+- import_tasks: activationkey.yml
+  when: ( redhat_subscription_activationkey is defined and redhat_subscription_org_id is defined )
+  tags:
+    - subscription
+
+- import_tasks: repositories/disable.yml
+  when: redhat_subscription_disable_repos | length > 0
+  tags:
+    - repositories
+
+- import_tasks: repositories/enable.yml
+  when: redhat_subscription_enable_repos | length > 0
+  tags:
+    - repositories

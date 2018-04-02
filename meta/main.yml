@@ -1,0 +1,13 @@
+dependencies: []
+
+galaxy_info:
+  author: "Arun Neelicattu"
+  description: "Red Hat Subscription Registration"
+  issue_tracker_url: https://github.com/devnullcake/ansible-role-redhat-subscription/issues
+  license: Apache
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+  galaxy_tags:
+    - ansible:redhat:subscription
+    - bootstrap

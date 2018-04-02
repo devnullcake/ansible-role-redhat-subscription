@@ -1,0 +1,30 @@
+---
+- name: enable specified repositories
+  rhsm_repository:
+    name: "{{ redhat_subscription_enable_repos }}"
+    state: enabled
+  register: rhsm_repository
+  tags:
+    - repositories-enable
+
+- block:
+    - name: generate list of repositories not explicitly enabled
+      set_fact:
+        repositories_to_disable: "{{
+          rhsm_repository.repositories
+            | map(attribute='id')
+            | difference(redhat_subscription_enable_repos)
+        }}"
+
+    - name: list repositories not explicitly enabled
+      debug:
+        var: repositories_to_disable
+
+    - name: disable repositories not explicitly enabled
+      rhsm_repository:
+        name: "{{ repositories_to_disable }}"
+        state: disabled
+      when: repositories_to_disable
+  when: redhat_subscription_enable_explicit_repos_only | bool
+  tags:
+    - repositories-disable

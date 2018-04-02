@@ -1,0 +1,10 @@
+---
+- name: ensure host distribution is redhat
+  fail:
+    msg: "This role is only supported for Red Hat hosts"
+  when: ansible_distribution != 'RedHat'
+
+- name: install subscription manager
+  package:
+      name: subscription-manager
+      state: present
