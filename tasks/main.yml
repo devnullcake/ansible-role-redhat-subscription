@@ -1,17 +1,28 @@
 ---
-- import_tasks: prerequisite.yml
+- block:
+    - import_tasks: prerequisite.yml
+      when:
+        - not redhat_subscription_skip_prereq
+        - redhat_subscription_prequisite_check_completed is not defined
+      tags:
+        - prerequisite
 
-- import_tasks: activationkey.yml
-  when: ( redhat_subscription_activationkey is defined and redhat_subscription_org_id is defined )
-  tags:
-    - subscription
+    - import_tasks: activationkey.yml
+      when: ( redhat_subscription_activationkey is defined and redhat_subscription_org_id is defined )
+      tags:
+        - subscription
 
-- import_tasks: repositories/disable.yml
-  when: redhat_subscription_disable_repos | length > 0
-  tags:
-    - repositories
+    - import_tasks: repositories/disable.yml
+      when: redhat_subscription_disable_repos | length > 0
+      tags:
+        - repositories
 
-- import_tasks: repositories/enable.yml
-  when: redhat_subscription_enable_repos | length > 0
-  tags:
-    - repositories
+    - import_tasks: repositories/enable.yml
+      when: redhat_subscription_enable_repos | length > 0
+      tags:
+        - repositories
+
+    - name: set registered flag for host
+      set_fact:
+        redhat_subscription_registered: yes
+  when: redhat_subscription_registered is not defined
